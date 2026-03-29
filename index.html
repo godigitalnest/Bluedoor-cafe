@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="The Blu Door Caafe — Dining & Shooting Arena in Sector 91, Mohali. Pan Pizzas, Pasta, Burgers, Shakes, Mocktails & more."/>
+<title>The Blu Door Caafe — Sector 91, Mohali</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#FFFFFF;
+  --warm:#F0F5FF;
+  --paper:#E8EFFA;
+  --brown:#0A1628;
+  --brown2:#0D2144;
+  --brown3:#1A3A6B;
+  --gold:#1A56DB;
+  --gold2:#3B82F6;
+  --blue:#1A3F8F;
+  --blue2:#1E4FC7;
+  --blue3:#3B6FDB;
+  --rust:#C0442A;
+  --green:#2D6A4F;
+  --text:#0A1628;
+  --muted:#2E4A7A;
+  --dim:#5A7AB0;
+  --line:rgba(26,63,143,0.14);
+  --line2:rgba(26,86,219,0.35);
+  --disp:'Playfair Display',serif;
+  --body:'Nunito',sans-serif;
+  --mono:'DM Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--text);font-family:var(--body);overflow-x:hidden;line-height:1.6;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--warm);}
+::-webkit-scrollbar-thumb{background:var(--blue2);border-radius:4px;}
+a{color:inherit;text-decoration:none;}
+
+/* TEXTURE OVERLAY */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity:0.5;
+}
+
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 6%;transition:all .4s var(--ease);
+}
+nav.sol{
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  padding:14px 6%;
+  box-shadow:0 4px 32px rgba(26,63,143,0.10);
+}
+.logo{display:flex;flex-direction:column;line-height:1;}
+.logo-main{font-family:var(--disp);font-size:1.5rem;font-weight:900;color:var(--blue);letter-spacing:-0.5px;}
+.logo-sub{font-family:var(--mono);font-size:0.58rem;color:var(--gold2);letter-spacing:0.2em;text-transform:uppercase;}
+.nav-ul{display:flex;gap:32px;list-style:none;}
+.nav-ul a{font-family:var(--mono);font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:3px;}
+.nav-ul a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--gold);transition:width .25s var(--ease);}
+.nav-ul a:hover{color:var(--brown);}
+.nav-ul a:hover::after{width:100%;}
+.nav-cta{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;padding:10px 22px;background:var(--blue);color:#fff;border-radius:6px;transition:all .25s;box-shadow:0 4px 20px rgba(27,75,122,0.3);}
+.nav-cta:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(27,75,122,0.4);}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{width:22px;height:2px;background:var(--blue);border-radius:2px;transition:all .3s;display:block;}
+.hbg.x span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hbg.x span:nth-child(2){opacity:0;}
+.hbg.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mob-nav{display:none;position:fixed;inset:0;z-index:99;background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:36px;}
+.mob-nav.open{display:flex;}
+.mob-nav a{font-family:var(--disp);font-size:2rem;color:var(--muted);font-weight:700;transition:color .2s;}
+.mob-nav a:hover,.mob-nav a.hi{color:var(--blue);}
+
+/* ═══ HERO ═══ */
+#home{
+  min-height:100vh;display:flex;align-items:center;
+  padding:130px 6% 80px;position:relative;z-index:2;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,63,143,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 70%, rgba(59,130,246,0.07) 0%, transparent 60%),
+    linear-gradient(160deg, #FFFFFF 0%, #F0F5FF 50%, #E8EFFA 100%);
+}
+/* decorative circles */
+.hero-bg::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(26,86,219,0.14);top:50%;right:5%;transform:translateY(-50%);animation:spinSlow 30s linear infinite;}
+.hero-bg::after{content:'';position:absolute;width:360px;height:360px;border-radius:50%;border:1px solid rgba(26,63,143,0.10);top:50%;right:10%;transform:translateY(-50%);animation:spinSlow 20s linear infinite reverse;}
+@keyframes spinSlow{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
+
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-left{}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:0.65rem;color:var(--blue2);border:1px solid var(--line2);border-radius:100px;padding:5px 14px;margin-bottom:28px;letter-spacing:0.12em;background:rgba(26,86,219,0.06);opacity:0;animation:riseUp .9s .1s var(--ease) forwards;}
+.blink{width:6px;height:6px;background:var(--blue2);border-radius:50%;animation:blink 2s infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+/* OPEN / CLOSED STATUS */
+#statusBadge.is-open{color:#16a34a;border-color:rgba(22,163,74,0.35);background:rgba(22,163,74,0.08);}
+#statusBadge.is-open #statusDot{background:#16a34a;}
+#statusBadge.is-closed{color:#DC2626;border-color:rgba(220,38,38,0.35);background:rgba(220,38,38,0.08);}
+#statusBadge.is-closed #statusDot{background:#DC2626;animation:none;}
+.hero-title{font-family:var(--disp);font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:.95;letter-spacing:-1px;margin-bottom:24px;opacity:0;animation:riseUp .9s .2s var(--ease) forwards;}
+.ht1{display:block;color:var(--blue);}
+.ht2{display:block;color:var(--blue2);font-style:italic;}
+.ht3{display:block;color:var(--muted);font-size:55%;font-family:var(--mono);letter-spacing:0.08em;font-style:normal;margin-top:6px;}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.75;max-width:420px;margin-bottom:36px;font-weight:400;opacity:0;animation:riseUp .9s .3s var(--ease) forwards;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;opacity:0;animation:riseUp .9s .4s var(--ease) forwards;}
+.btn-gold{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.07em;padding:13px 28px;background:var(--blue);color:#fff;border-radius:7px;box-shadow:0 4px 24px rgba(26,63,143,0.35);transition:all .25s;}
+.btn-gold:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 36px rgba(26,63,143,0.45);}
+.btn-outline{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.07em;padding:13px 28px;background:transparent;color:var(--muted);border:1.5px solid var(--line);border-radius:7px;transition:all .25s;}
+.btn-outline:hover{color:var(--blue);border-color:var(--blue2);background:rgba(26,63,143,0.06);}
+
+/* HERO VISUAL */
+.hero-right{opacity:0;animation:riseUp .9s .4s var(--ease) forwards;}
+.hero-card-stack{position:relative;height:420px;}
+.hcard{
+  position:absolute;border-radius:18px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(44,24,16,0.2);
+}
+.hcard-main{
+  width:280px;height:340px;top:40px;right:40px;
+  background:linear-gradient(160deg,#0D2144,#1A3F8F);
+  display:flex;align-items:center;justify-content:center;
+  animation:floatY 4s ease-in-out infinite;
+}
+.hcard-accent{
+  width:200px;height:240px;top:0;right:240px;
+  background:linear-gradient(160deg,#1A56DB,#0A2A7A);
+  display:flex;align-items:center;justify-content:center;
+  animation:floatY 5s ease-in-out infinite .5s;
+}
+.hcard-small{
+  width:140px;height:140px;bottom:0;right:20px;
+  background:#fff;border:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  animation:floatY 3.5s ease-in-out infinite 1s;
+}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.food-emoji{font-size:3.5rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));}
+.card-label{font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.7);letter-spacing:0.15em;text-transform:uppercase;margin-top:8px;text-align:center;}
+.card-n{font-family:var(--disp);font-size:1.6rem;font-weight:900;color:var(--blue);line-height:1;}
+.card-l{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.1em;margin-top:3px;}
+
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap;padding-top:36px;margin-top:36px;border-top:1px solid var(--line);opacity:0;animation:riseUp .9s .5s var(--ease) forwards;}
+.hsn{font-family:var(--disp);font-size:2rem;font-weight:900;color:var(--blue);line-height:1;}
+.hsl{font-size:0.74rem;color:var(--dim);margin-top:4px;}
+
+@keyframes riseUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══ TICKER ═══ */
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:11px 0;background:var(--blue);position:relative;z-index:2;}
+.ticker-track{display:flex;width:max-content;animation:tickRun 25s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+.ti{font-family:var(--mono);font-size:0.67rem;color:rgba(255,255,255,0.8);padding:0 24px;letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:12px;}
+.ti::after{content:'✦';color:rgba(255,255,255,0.4);font-size:0.5rem;}
+@keyframes tickRun{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ═══ SHARED ═══ */
+.sec{padding:110px 6%;position:relative;z-index:2;}
+.sec-warm{background:var(--warm);}
+.sec-paper{background:var(--paper);}
+.sec-blue{background:var(--blue);color:#fff;}
+.sec-inner{max-width:1100px;margin:0 auto;}
+.s-tag{font-family:var(--mono);font-size:0.63rem;color:var(--blue2);letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.s-tag::before{content:'';width:24px;height:1.5px;background:var(--blue2);flex-shrink:0;}
+.s-ttl{font-family:var(--disp);font-size:clamp(2rem,4.5vw,3.5rem);font-weight:900;line-height:1.05;margin-bottom:12px;}
+.s-sub{font-size:0.96rem;color:var(--muted);max-width:460px;line-height:1.78;margin-bottom:56px;}
+.sec-blue .s-tag{color:var(--gold2);}
+.sec-blue .s-tag::before{background:var(--gold2);}
+.sec-blue .s-sub{color:rgba(255,255,255,0.65);}
+
+/* SCROLL REVEAL */
+.sr{opacity:0;transform:translateY(36px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.sr.d1{transition-delay:.1s;}.sr.d2{transition-delay:.2s;}.sr.d3{transition-delay:.3s;}
+.sr.on{opacity:1;transform:translateY(0);}
+
+/* ═══ ABOUT ═══ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-vis{position:relative;}
+.about-main{
+  background:var(--blue);border-radius:20px;padding:40px;
+  position:relative;overflow:hidden;
+  box-shadow:0 30px 80px rgba(27,75,122,0.25);
+}
+.about-main::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(59,130,246,0.15);pointer-events:none;}
+.about-main::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none;}
+.am-head{font-family:var(--mono);font-size:0.6rem;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px;}
+.am-txt{font-size:0.88rem;color:rgba(255,255,255,0.75);line-height:1.75;margin-bottom:28px;}
+.am-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.am-stat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:11px;padding:16px;text-align:center;}
+.am-n{font-family:var(--disp);font-size:1.8rem;font-weight:900;color:var(--gold2);line-height:1;}
+.am-l{font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:0.04em;}
+.about-accent{position:absolute;bottom:-20px;right:-20px;background:var(--blue);border-radius:14px;padding:18px 22px;box-shadow:0 16px 48px rgba(26,63,143,0.45);animation:floatY 4s ease-in-out infinite;z-index:3;}
+.aa-n{font-family:var(--disp);font-size:1.8rem;font-weight:900;color:#fff;line-height:1;}
+.aa-l{font-size:0.68rem;color:rgba(255,255,255,0.75);margin-top:3px;}
+.about-pts{display:flex;flex-direction:column;gap:14px;margin-top:32px;}
+.apt{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border-radius:12px;background:rgba(26,63,143,0.03);border:1px solid var(--line);transition:all .3s;}
+.apt:hover{border-color:var(--line2);transform:translateX(5px);background:rgba(26,86,219,0.06);}
+.apt-ico{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+.apt-t strong{display:block;font-size:0.9rem;color:var(--brown);margin-bottom:2px;font-weight:700;}
+.apt-t span{font-size:0.83rem;color:var(--muted);line-height:1.6;}
+
+/* ═══ MENU ═══ */
+.menu-intro{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:48px;}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.menu-cat{
+  border-radius:14px;padding:28px 22px;
+  background:var(--cream);border:1.5px solid var(--line);
+  transition:all .4s var(--ease);cursor:default;position:relative;overflow:hidden;
+}
+.menu-cat::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,86,219,0.06),transparent);opacity:0;transition:opacity .3s;}
+.menu-cat:hover{transform:perspective(600px) translateZ(16px) translateY(-5px);border-color:var(--line2);box-shadow:0 20px 50px rgba(26,63,143,0.10);}
+.menu-cat:hover::before{opacity:1;}
+.mc-ico{font-size:2rem;margin-bottom:14px;display:block;}
+.mc-name{font-family:var(--disp);font-size:1.05rem;font-weight:700;color:var(--brown);margin-bottom:5px;}
+.mc-count{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.1em;}
+
+/* ═══ SPECIALS ═══ */
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.spec-card{
+  border-radius:16px;overflow:hidden;
+  background:rgba(255,255,255,0.6);border:1px solid var(--line);
+  transition:transform .5s var(--ease),box-shadow .4s;
+  position:relative;
+}
+.spec-card:hover{transform:perspective(800px) rotateX(4deg) rotateY(-3deg) translateY(-8px);box-shadow:0 28px 70px rgba(26,63,143,0.15);}
+.spec-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:4.5rem;position:relative;}
+.spec-body{padding:22px 22px 24px;}
+.spec-cat{font-family:var(--mono);font-size:0.6rem;color:var(--blue2);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:7px;}
+.spec-name{font-family:var(--disp);font-size:1.2rem;font-weight:700;color:var(--brown);margin-bottom:6px;}
+.spec-desc{font-size:0.82rem;color:var(--muted);line-height:1.65;}
+
+/* ═══ SHOOTING ARENA ═══ */
+.arena-wrap{
+  border-radius:24px;overflow:hidden;
+  background:linear-gradient(135deg,#0d1a0d,#1a2e0a,#0a1a1a);
+  padding:60px;position:relative;
+  box-shadow:0 40px 100px rgba(0,0,0,0.3);
+}
+.arena-wrap::before{
+  content:'🎯';position:absolute;right:60px;top:50%;transform:translateY(-50%);
+  font-size:10rem;opacity:0.08;
+}
+.arena-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.arena-left{}
+.arena-tag{font-family:var(--mono);font-size:0.63rem;color:#4ade80;letter-spacing:0.2em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.arena-tag::before{content:'';width:24px;height:1.5px;background:#4ade80;flex-shrink:0;}
+.arena-title{font-family:var(--disp);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:#fff;line-height:1.05;margin-bottom:16px;}
+.arena-sub{font-size:0.96rem;color:rgba(255,255,255,0.6);line-height:1.75;margin-bottom:32px;}
+.arena-pts{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;}
+.arena-pt{display:flex;align-items:center;gap:12px;font-size:0.88rem;color:rgba(255,255,255,0.75);}
+.arena-pt::before{content:'✓';color:#4ade80;font-family:var(--mono);font-size:0.78rem;flex-shrink:0;}
+.btn-arena{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.08em;padding:14px 28px;background:#4ade80;color:#0d1a0d;border-radius:8px;font-weight:700;transition:all .25s;box-shadow:0 4px 24px rgba(74,222,128,0.35);}
+.btn-arena:hover{background:#22c55e;transform:translateY(-2px);box-shadow:0 8px 36px rgba(74,222,128,0.5);}
+.arena-right{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.arena-stat{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:22px;text-align:center;}
+.as-n{font-family:var(--disp);font-size:2rem;font-weight:900;color:#4ade80;line-height:1;}
+.as-l{font-size:0.73rem;color:rgba(255,255,255,0.5);margin-top:5px;letter-spacing:0.04em;}
+
+/* ═══ CONTACT ═══ */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
+.c-lead{font-size:0.96rem;color:var(--muted);line-height:1.78;margin-bottom:40px;max-width:380px;}
+.c-items{display:flex;flex-direction:column;gap:13px;}
+.c-item{display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,0.6);text-decoration:none;transition:all .3s;}
+.c-item:hover{border-color:var(--line2);background:rgba(26,86,219,0.05);transform:translateX(5px);}
+.c-ico{width:40px;height:40px;background:rgba(26,63,143,0.10);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.c-lbl{font-family:var(--mono);font-size:0.59rem;color:var(--dim);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2px;}
+.c-val{font-size:0.88rem;color:var(--brown);font-weight:600;}
+.cform{display:flex;flex-direction:column;gap:13px;}
+.wa-btn{display:flex;align-items:center;justify-content:center;gap:12px;padding:16px;background:#16a34a;color:#fff;border-radius:10px;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.08em;text-decoration:none;transition:all .25s;box-shadow:0 4px 24px rgba(22,163,74,0.3);}
+.wa-btn:hover{background:#15803d;transform:translateY(-2px);box-shadow:0 8px 36px rgba(22,163,74,0.45);}
+.or{text-align:center;font-family:var(--mono);font-size:0.59rem;color:var(--dim);letter-spacing:0.14em;margin:2px 0;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.flbl{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;}
+.finp{background:rgba(255,255,255,0.8);border:1.5px solid var(--line);border-radius:9px;padding:12px 14px;color:var(--text);font-family:var(--body);font-size:0.86rem;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+.finp:focus{border-color:var(--blue2);box-shadow:0 0 0 3px rgba(26,86,219,0.12);}
+.finp::placeholder{color:var(--dim);}
+textarea.finp{resize:vertical;min-height:100px;}
+.fsub{padding:14px;background:var(--blue);color:#fff;border:none;border-radius:9px;font-family:var(--mono);font-size:0.74rem;letter-spacing:0.09em;cursor:pointer;transition:all .25s;box-shadow:0 4px 20px rgba(27,75,122,0.3);width:100%;}
+.fsub:hover{background:var(--blue2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(27,75,122,0.4);}
+
+/* ═══ FOOTER ═══ */
+footer{background:#0A1628;padding:48px 6% 28px;position:relative;z-index:2;}
+.foot-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;}
+.foot-brand .logo-main{color:#fff;}
+.foot-brand .logo-sub{color:var(--gold2);}
+.foot-tagline{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:10px;max-width:220px;line-height:1.6;}
+.foot-links-wrap{display:flex;gap:60px;flex-wrap:wrap;}
+.foot-col h4{font-family:var(--mono);font-size:0.63rem;color:var(--gold2);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.foot-col ul a{font-size:0.83rem;color:rgba(255,255,255,0.5);transition:color .2s;}
+.foot-col ul a:hover{color:rgba(255,255,255,0.9);}
+.foot-bottom{max-width:1100px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-copy{font-size:0.76rem;color:rgba(255,255,255,0.3);}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .hero-right{display:none;}
+  .about-grid{grid-template-columns:1fr;gap:48px;}
+  .about-vis{max-width:480px;width:100%;}
+  .menu-grid{grid-template-columns:repeat(2,1fr);}
+  .spec-grid{grid-template-columns:repeat(2,1fr);}
+  .arena-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;gap:48px;}
+}
+@media(max-width:768px){
+  .nav-ul,.nav-cta{display:none;}
+  .hbg{display:flex;}
+  nav{padding:18px 5%;}nav.sol{padding:12px 5%;}
+  #home{padding:110px 5% 70px;}
+  .hero-title{font-size:clamp(2.8rem,10vw,4.5rem);}
+  .hero-btns{flex-direction:column;}
+  .btn-gold,.btn-outline{width:100%;justify-content:center;}
+  .menu-grid{grid-template-columns:repeat(2,1fr);}
+  .spec-grid{grid-template-columns:1fr;}
+  .arena-wrap{padding:36px 28px;}
+  .arena-wrap::before{display:none;}
+  .arena-right{grid-template-columns:repeat(2,1fr);}
+  .frow{grid-template-columns:1fr;}
+  .foot-inner{flex-direction:column;}
+  .foot-bottom{flex-direction:column;text-align:center;}
+  .sec{padding:80px 5%;}
+}
+@media(max-width:480px){
+  .hero-title{font-size:2.5rem;}
+  .menu-grid{grid-template-columns:1fr 1fr;}
+  .hero-stats{gap:20px;}
+  .about-accent{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="logo">
+    <span class="logo-main">The Blu Door Caafe</span>
+    <span class="logo-sub">Sector 91, Mohali</span>
+  </a>
+  <ul class="nav-ul">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#arena">Shooting Arena</a></li>
+    <li><a href="#contact">Visit Us</a></li>
+  </ul>
+  <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%27d%20like%20to%20reserve%20a%20table%20at%20The%20Blu%20Door%20Caafe." class="nav-cta">Reserve a Table →</a>
+  <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="#about" onclick="cm()">About</a>
+  <a href="#menu" onclick="cm()">Menu</a>
+  <a href="#arena" onclick="cm()">Shooting Arena</a>
+  <a href="#contact" onclick="cm()">Visit Us</a>
+  <a href="https://wa.me/91XXXXXXXXXX" class="hi" onclick="cm()">📲 Reserve a Table</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag" id="statusBadge"><span class="blink" id="statusDot"></span><span id="statusText">Checking hours...</span></div>
+      <h1 class="hero-title">
+        <span class="ht1">The Blu</span>
+        <span class="ht2">Door Caafe</span>
+        <span class="ht3">Sector 91, Mohali</span>
+      </h1>
+      <p class="hero-sub">Where great food meets great vibes. From wood-fired pan pizzas and grilled sandwiches to craft mocktails and a one-of-a-kind shooting arena — there's always a reason to walk through our door.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-gold">🍽️ Explore Menu</a>
+        <a href="#contact" class="btn-outline">📍 Find Us →</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hsn">11+</div><div class="hsl">Menu Categories</div></div>
+        <div><div class="hsn">60+</div><div class="hsl">Dishes to Choose From</div></div>
+        <div><div class="hsn">🎯</div><div class="hsl">Shooting Arena</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card-stack">
+        <div class="hcard hcard-main">
+          <div style="text-align:center;">
+            <div class="food-emoji">🍕</div>
+            <div class="card-label">Pan Pizzas · Pasta · Mains</div>
+          </div>
+        </div>
+        <div class="hcard hcard-accent">
+          <div style="text-align:center;">
+            <div style="font-size:2.8rem;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));">🥤</div>
+            <div class="card-label" style="color:rgba(44,24,16,0.6);">Shakes & Mocktails</div>
+          </div>
+        </div>
+        <div class="hcard hcard-small">
+          <div class="card-n">4.5★</div>
+          <div class="card-l">Customer Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ti">Pan Pizzas</span><span class="ti">Pasta</span><span class="ti">Burgers</span>
+    <span class="ti">Tortilla Wraps</span><span class="ti">Mocktails</span><span class="ti">Shakes</span>
+    <span class="ti">Small Bites</span><span class="ti">Soups</span><span class="ti">Desserts</span>
+    <span class="ti">Shooting Arena</span><span class="ti">Sector 91 Mohali</span>
+    <span class="ti">Pan Pizzas</span><span class="ti">Pasta</span><span class="ti">Burgers</span>
+    <span class="ti">Tortilla Wraps</span><span class="ti">Mocktails</span><span class="ti">Shakes</span>
+    <span class="ti">Small Bites</span><span class="ti">Soups</span><span class="ti">Desserts</span>
+    <span class="ti">Shooting Arena</span><span class="ti">Sector 91 Mohali</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec sec-warm">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-vis sr">
+        <div class="about-main">
+          <div class="am-head">Why people love us</div>
+          <p class="am-txt">The Blu Door Caafe isn't just a restaurant — it's a destination. Great food, great ambience, and a shooting arena that makes every visit memorable.</p>
+          <div class="am-stats">
+            <div class="am-stat"><div class="am-n">4.5★</div><div class="am-l">Zomato Rating</div></div>
+            <div class="am-stat"><div class="am-n">60+</div><div class="am-l">Menu Items</div></div>
+            <div class="am-stat"><div class="am-n">11</div><div class="am-l">Categories</div></div>
+            <div class="am-stat"><div class="am-n">🎯</div><div class="am-l">Shooting Arena</div></div>
+          </div>
+        </div>
+        <div class="about-accent"><div class="aa-n">Sector 91</div><div class="aa-l">Mohali, Punjab</div></div>
+      </div>
+      <div class="sr d1">
+        <div class="s-tag">Our Story</div>
+        <h2 class="s-ttl">More than just a cafe.</h2>
+        <p class="s-sub">We created a space where you can enjoy a hearty meal, sip on creative mocktails, and even try your hand at our shooting arena — all under one roof.</p>
+        <div class="about-pts">
+          <div class="apt"><div class="apt-ico">🍽️</div><div class="apt-t"><strong>Diverse Menu</strong><span>From light soups and small bites to full mains and wood-fired pizzas — something for every appetite.</span></div></div>
+          <div class="apt"><div class="apt-ico">🥤</div><div class="apt-t"><strong>Craft Drinks</strong><span>Hand-crafted shakes, creative mocktails, and refreshing beverages made fresh to order.</span></div></div>
+          <div class="apt"><div class="apt-ico">🎯</div><div class="apt-t"><strong>Shooting Arena</strong><span>Our unique shooting arena makes The Blu Door an experience, not just a meal. Perfect for groups.</span></div></div>
+          <div class="apt"><div class="apt-ico">📍</div><div class="apt-t"><strong>Easy to Find</strong><span>Located in Sector 91, Mohali — easily accessible with ample parking nearby.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="sec">
+  <div class="sec-inner">
+    <div class="menu-intro">
+      <div>
+        <div class="s-tag sr">What We Serve</div>
+        <h2 class="s-ttl sr d1">Our Menu</h2>
+        <p class="s-sub sr d2" style="margin-bottom:0;">Crafted with fresh ingredients and a whole lot of love.</p>
+      </div>
+      <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20Can%20I%20get%20the%20full%20menu%20of%20The%20Blu%20Door%20Caafe?" class="btn-gold sr" style="height:fit-content;white-space:nowrap;">📋 Full Menu on WhatsApp</a>
+    </div>
+    <div class="menu-grid sr d1">
+      <div class="menu-cat"><span class="mc-ico">🍲</span><div class="mc-name">Soups</div><div class="mc-count">4 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🍟</span><div class="mc-name">Small Bites</div><div class="mc-count">11 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🍕</span><div class="mc-name">Pan Pizzas</div><div class="mc-count">4 varieties · 10 inch</div></div>
+      <div class="menu-cat"><span class="mc-ico">🍝</span><div class="mc-name">Pasta</div><div class="mc-count">8 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🌯</span><div class="mc-name">Tortilla Wraps</div><div class="mc-count">4 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🍔</span><div class="mc-name">Burgers</div><div class="mc-count">4 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🥪</span><div class="mc-name">Sandwiches</div><div class="mc-count">4 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🍱</span><div class="mc-name">Mains</div><div class="mc-count">8 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🥤</span><div class="mc-name">Shakes</div><div class="mc-count">5 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🍹</span><div class="mc-name">Mocktails</div><div class="mc-count">7 varieties</div></div>
+      <div class="menu-cat"><span class="mc-ico">🍮</span><div class="mc-name">Desserts</div><div class="mc-count">3 varieties</div></div>
+      <div class="menu-cat" style="background:var(--blue);border-color:var(--blue2);">
+        <span class="mc-ico">✦</span>
+        <div class="mc-name" style="color:#fff;">Order Now</div>
+        <div class="mc-count" style="color:rgba(255,255,255,0.6);">via WhatsApp or Zomato</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="sec sec-warm">
+  <div class="sec-inner">
+    <div class="s-tag sr">Must Try</div>
+    <h2 class="s-ttl sr d1">House Favourites</h2>
+    <p class="s-sub sr d2">These are the dishes our regulars come back for again and again.</p>
+    <div class="spec-grid sr d1">
+      <div class="spec-card">
+        <div class="spec-img" style="background:linear-gradient(135deg,#0D2144,#1A3F8F);">🥪</div>
+        <div class="spec-body">
+          <div class="spec-cat">Sandwich · Small Bites</div>
+          <div class="spec-name">Grilled Chicken Sandwich</div>
+          <div class="spec-desc">Juicy grilled chicken with fresh veggies and creamy coleslaw on toasted ciabatta. A crowd favourite.</div>
+        </div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-img" style="background:linear-gradient(135deg,#1B4B7A,#0d2a4a);">🍕</div>
+        <div class="spec-body">
+          <div class="spec-cat">Pan Pizza · 10 Inch</div>
+          <div class="spec-name">Signature Pan Pizza</div>
+          <div class="spec-desc">Hand-stretched 10-inch base with our secret sauce, loaded toppings and perfectly melted cheese.</div>
+        </div>
+      </div>
+      <div class="spec-card">
+        <div class="spec-img" style="background:linear-gradient(135deg,#2D6A4F,#1a4030);">🍹</div>
+        <div class="spec-body">
+          <div class="spec-cat">Mocktails · Drinks</div>
+          <div class="spec-name">Blu Door Special Mocktail</div>
+          <div class="spec-desc">Our signature house mocktail — a refreshing blend of seasonal fruits and herbs. Instagram-worthy.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOOTING ARENA -->
+<section id="arena" class="sec sec-paper">
+  <div class="sec-inner">
+    <div class="arena-wrap sr">
+      <div class="arena-grid">
+        <div class="arena-left">
+          <div class="arena-tag">Unique Experience</div>
+          <h2 class="arena-title">Shooting<br/>Arena</h2>
+          <p class="arena-sub">The only café in Sector 91 with its own shooting arena. Challenge your friends, test your aim, and make your visit truly unforgettable.</p>
+          <div class="arena-pts">
+            <div class="arena-pt">Safe & supervised environment</div>
+            <div class="arena-pt">Perfect for groups & corporate outings</div>
+            <div class="arena-pt">Available for all skill levels</div>
+            <div class="arena-pt">Book along with your meal</div>
+          </div>
+          <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%27d%20like%20to%20book%20the%20Shooting%20Arena%20at%20The%20Blu%20Door%20Caafe." class="btn-arena">🎯 Book the Arena</a>
+        </div>
+        <div class="arena-right">
+          <div class="arena-stat"><div class="as-n">🎯</div><div class="as-l">Shooting Arena</div></div>
+          <div class="arena-stat"><div class="as-n">👥</div><div class="as-l">Group Bookings</div></div>
+          <div class="arena-stat"><div class="as-n">🏆</div><div class="as-l">Tournaments</div></div>
+          <div class="arena-stat"><div class="as-n">✅</div><div class="as-l">All Skill Levels</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-inner">
+    <div class="s-tag sr">Visit Us</div>
+    <h2 class="s-ttl sr d1">Come walk through<br/>our door.</h2>
+    <div class="contact-grid">
+      <div class="sr">
+        <p class="c-lead">We're open and ready to welcome you. Reserve a table, order online, or just walk in — we're always happy to see you.</p>
+        <div class="c-items">
+          <a href="https://wa.me/91XXXXXXXXXX" class="c-item"><div class="c-ico">📲</div><div><div class="c-lbl">WhatsApp / Call</div><div class="c-val">+91 XXXXX XXXXX</div></div></a>
+          <div class="c-item"><div class="c-ico">📍</div><div><div class="c-lbl">Address</div><div class="c-val">Sector 91, Mohali, Punjab</div></div></div>
+          <div class="c-item"><div class="c-ico">🕐</div><div><div class="c-lbl">Hours</div><div class="c-val">Daily · 11:00 AM – 11:00 PM</div></div></div>
+          <a href="https://www.zomato.com/chandigarh/the-blu-door-caafe-sector-91-mohali-mohali" target="_blank" class="c-item"><div class="c-ico">🍽️</div><div><div class="c-lbl">Order Online</div><div class="c-val">Order on Zomato</div></div></a>
+          <a href="https://www.instagram.com/the_blu_door_caafe/" target="_blank" class="c-item"><div class="c-ico">📸</div><div><div class="c-lbl">Follow Us</div><div class="c-val">@the_blu_door_caafe</div></div></a>
+        </div>
+      </div>
+      <div class="cform sr d1">
+        <a href="https://wa.me/91XXXXXXXXXX?text=Hi!%20I%27d%20like%20to%20reserve%20a%20table%20at%20The%20Blu%20Door%20Caafe." class="wa-btn">📲 Reserve a Table on WhatsApp</a>
+        <div class="or">— OR SEND US A MESSAGE —</div>
+        <div class="frow">
+          <div class="fg"><label class="flbl">Your Name</label><input id="fn" type="text" class="finp" placeholder="Arjun Singh"/></div>
+          <div class="fg"><label class="flbl">Phone</label><input id="fp" type="tel" class="finp" placeholder="+91 98765 43210"/></div>
+        </div>
+        <div class="fg"><label class="flbl">Date & Time</label><input id="fd" type="text" class="finp" placeholder="e.g. 15 April, 7:30 PM"/></div>
+        <div class="fg"><label class="flbl">Message</label><textarea id="fm" class="finp" placeholder="No. of guests, special requests, arena booking..."></textarea></div>
+        <button class="fsub" onclick="sendWA()">Send Reservation Request →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="logo">
+        <span class="logo-main">The Blu Door Caafe</span>
+        <span class="logo-sub">Sector 91, Mohali</span>
+      </div>
+      <p class="foot-tagline">Where great food meets great vibes — and a shooting arena awaits.</p>
+    </div>
+    <div class="foot-links-wrap">
+      <div class="foot-col">
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#menu">Soups & Small Bites</a></li>
+          <li><a href="#menu">Pan Pizzas & Pasta</a></li>
+          <li><a href="#menu">Burgers & Wraps</a></li>
+          <li><a href="#menu">Shakes & Mocktails</a></li>
+          <li><a href="#menu">Desserts</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#arena">Shooting Arena</a></li>
+          <li><a href="#contact">Location</a></li>
+          <li><a href="https://www.zomato.com/chandigarh/the-blu-door-caafe-sector-91-mohali-mohali" target="_blank">Order on Zomato</a></li>
+          <li><a href="https://www.instagram.com/the_blu_door_caafe/" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2026 The Blu Door Caafe, Sector 91 Mohali. All rights reserved.</div>
+    <div class="foot-copy" style="color:rgba(255,255,255,0.2);">Website by <span style="color:rgba(59,130,246,0.7);">DigiNest</span></div>
+  </div>
+</footer>
+
+<script>
+/* OPEN / CLOSED STATUS */
+(function(){
+  // Opening hours — 11:00 AM to 11:00 PM IST, all 7 days
+  // Change OPEN_HOUR / CLOSE_HOUR to match actual timings once confirmed
+  var OPEN_HOUR  = 11;   // 11:00 AM
+  var CLOSE_HOUR = 23;   // 11:00 PM
+
+  function checkStatus(){
+    // Get current IST time (UTC+5:30)
+    var now    = new Date();
+    var utc    = now.getTime() + now.getTimezoneOffset() * 60000;
+    var ist    = new Date(utc + 5.5 * 3600000);
+    var hour   = ist.getHours();
+    var min    = ist.getMinutes();
+    var badge  = document.getElementById('statusBadge');
+    var dot    = document.getElementById('statusDot');
+    var txt    = document.getElementById('statusText');
+    var isOpen = (hour > OPEN_HOUR || (hour === OPEN_HOUR && min >= 0)) && hour < CLOSE_HOUR;
+
+    if(isOpen){
+      badge.className = 'hero-tag is-open';
+      txt.textContent = 'Open Now · Sector 91, Mohali';
+    } else {
+      badge.className = 'hero-tag is-closed';
+      // Tell them when it opens next
+      var opensAt = OPEN_HOUR >= 12
+        ? (OPEN_HOUR - 12 || 12) + ':00 PM'
+        : OPEN_HOUR + ':00 AM';
+      txt.textContent = 'Closed · Opens at ' + opensAt;
+    }
+  }
+
+  checkStatus();
+  // Re-check every minute so it updates live while page is open
+  setInterval(checkStatus, 60000);
+})();
+addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('sol',scrollY>50);});
+
+/* HAMBURGER */
+var hbg=document.getElementById('hbg'),mob=document.getElementById('mobNav');
+hbg.addEventListener('click',function(){hbg.classList.toggle('x');mob.classList.toggle('open');});
+function cm(){hbg.classList.remove('x');mob.classList.remove('open');}
+document.addEventListener('click',function(e){if(!hbg.contains(e.target)&&!mob.contains(e.target))cm();});
+
+/* SCROLL REVEAL */
+var srs=document.querySelectorAll('.sr');
+var sro=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.1});
+srs.forEach(function(el){sro.observe(el);});
+
+/* 3D HERO TILT */
+var heroLeft=document.querySelector('.hero-left');
+document.addEventListener('mousemove',function(e){
+  if(innerWidth<768)return;
+  var rx=(e.clientY/innerHeight-.5)*6,ry=(e.clientX/innerWidth-.5)*-6;
+  heroLeft.style.transform='perspective(1200px) rotateX('+rx+'deg) rotateY('+ry+'deg)';
+});
+document.addEventListener('mouseleave',function(){heroLeft.style.transform='perspective(1200px) rotateX(0) rotateY(0)';});
+
+/* 3D SCROLL PARALLAX */
+addEventListener('scroll',function(){
+  var sy=scrollY;
+  /* hero depth */
+  if(heroLeft&&innerWidth>768)
+    heroLeft.style.transform='perspective(1200px) translateZ(-'+(sy*.03)+'px) translateY('+(sy*.06)+'px)';
+  /* menu + spec cards pop */
+  document.querySelectorAll('.menu-cat,.spec-card,.apt,.arena-stat').forEach(function(el){
+    var r=el.getBoundingClientRect(),vh=innerHeight;
+    if(r.top<vh&&r.bottom>0){
+      var p=Math.max(0,Math.min(1,1-r.top/vh));
+      var sc=0.96+p*.04;
+      if(!el.matches(':hover'))el.style.transform='scale('+sc+')';
+    }
+  });
+});
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* FORM → WHATSAPP */
+function sendWA(){
+  var n=document.getElementById('fn').value.trim(),p=document.getElementById('fp').value.trim();
+  var d=document.getElementById('fd').value.trim(),m=document.getElementById('fm').value.trim();
+  if(!n||!p){alert('Please enter your name and phone number.');return;}
+  var t='Hi! I\'d like to make a reservation at The Blu Door Caafe.\n\nName: '+n+'\nPhone: '+p;
+  if(d)t+='\nDate & Time: '+d;
+  if(m)t+='\nMessage: '+m;
+  open('https://wa.me/91XXXXXXXXXX?text='+encodeURIComponent(t),'_blank');
+}
+</script>
+</body>
+</html>
